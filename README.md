@@ -7,4 +7,4 @@ For more information see these blog posts:
 
 - http://grangeia.io/2015/11/09/hacking-tomtom-runner-pt1/
 - http://grangeia.io/2015/11/16/hacking-tomtom-runner-pt2/
-- Part 3 coming soon
+- http://grangeia.io/2015/11/30/hacking-tomtom-runner-pt3/
