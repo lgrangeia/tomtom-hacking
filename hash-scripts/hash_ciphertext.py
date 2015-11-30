@@ -76,7 +76,7 @@ def test_pipeline(data):
             d = datetime.datetime.now().strftime('%H:%M:%S.%f')
             print('{}: pipeline stage {} has matched: {}'.
                   format(d, i, c.encode('hex')))
-            return
+            return True
 
         for mask in xrange(256):
             masked = sxor_mask(c, chr(mask))
@@ -84,9 +84,9 @@ def test_pipeline(data):
                 d = datetime.datetime.now().strftime('%H:%M:%S.%f')
                 print('{}: pipeline stage {} has matched: xor({}, {})'.
                       format(d, i, mask, c.encode('hex')))
-                return
+                return True
 
-    return
+    return False
 
 
 def search_range(data, begin, end):
@@ -95,7 +95,8 @@ def search_range(data, begin, end):
         print('{}: current range [{}:{}]'.format(d, i, end))
         for j in xrange(i + BLOCK_SIZE, end + BLOCK_SIZE, BLOCK_SIZE):
             chunk = data[i:j]
-            test_pipeline(chunk)
+            if test_pipeline(chunk):
+                print('Found match for range [{}:{}]'.format(i, j))
 
 
 def main():
